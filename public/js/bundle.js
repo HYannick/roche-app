@@ -13942,13 +13942,13 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
             connection.videosContainer.removeClass('toScroll');
         }
 
-        //init scroll if too many participants
-        let participantContainer = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.bloc-participants');
-        if (participantContainer.find('.participants').width() >= 300) {
+        /*init scroll if too many participants
+        let participantContainer = $('.bloc-participants');
+        if(participantContainer.find('.participants').width() >= 300){
             participantContainer.addClass('p-extend');
-        } else {
+        }else{
             participantContainer.removeClass('p-extend');
-        }
+        }*/
     };
 
     connection.videosContainer.on('click', '.video-div video', function () {

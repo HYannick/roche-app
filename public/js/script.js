@@ -272,13 +272,13 @@ $(function(){
             connection.videosContainer.removeClass('toScroll');
         }
 
-        //init scroll if too many participants
+        /*init scroll if too many participants
         let participantContainer = $('.bloc-participants');
         if(participantContainer.find('.participants').width() >= 300){
             participantContainer.addClass('p-extend');
         }else{
             participantContainer.removeClass('p-extend');
-        }
+        }*/
     };
 
 
