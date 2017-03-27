@@ -255,8 +255,6 @@ $(function(){
 
         if(event.stream.isScreen){
             camHandler.createScreenShare(video, event);
-        } else if(event.extra.screenCam){
-            camHandler.createfullScreenCam(video, event);
         }else {
             camHandler.createCam(video, event);
             participants.getParticipants(event);
@@ -276,7 +274,7 @@ $(function(){
 
         //init scroll if too many participants
         let participantContainer = $('.bloc-participants');
-        if(participantContainer.width() >= 300){
+        if(participantContainer.find('.participants').width() >= 100){
             participantContainer.addClass('p-extend');
         }else{
             participantContainer.removeClass('p-extend');
