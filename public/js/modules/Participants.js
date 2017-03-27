@@ -18,7 +18,6 @@ class Participants extends Handlers{
     }
 
     removeParticipant(event){
-
         const username = event.extra.username;
         $('.participant').each(function(){
             const toRemove = $(this).data('user');

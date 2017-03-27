@@ -13908,10 +13908,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     }
 
     //events on connection
-    connection.onstream = event => {
-        console.log(event);
-        let video = event.mediaElement;
 
+    connection.onstream = event => {
+        let video = event.mediaElement;
+        console.log(event);
         //check if the cam id exists. If it does removes it
         if (document.getElementById(event.streamid)) {
             var existing = document.getElementById(event.streamid);
@@ -13926,6 +13926,8 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
         if (event.stream.isScreen) {
             camHandler.createScreenShare(video, event);
+        } else if (event.extra.screenCam) {
+            camHandler.createfullScreenCam(video, event);
         } else {
             camHandler.createCam(video, event);
             participants.getParticipants(event);
@@ -13935,19 +13937,28 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
         animeInit();
 
-        //Init scroll if to much cameras
+        //Init scroll if too many cameras
         if (connection.videosContainer.height() >= __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height()) {
             connection.videosContainer.addClass('toScroll');
         } else {
             connection.videosContainer.removeClass('toScroll');
         }
+
+        //init scroll if too many participants
+        let participantContainer = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.bloc-participants');
+        if (participantContainer.width() >= 300) {
+            participantContainer.addClass('p-extend');
+        } else {
+            participantContainer.removeClass('p-extend');
+        }
     };
-    //temporary solution
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.video-container').on('click', '.video-div video', function () {
+
+    connection.videosContainer.on('click', '.video-div video', function () {
         if (__WEBPACK_IMPORTED_MODULE_6_screenfull___default.a.enabled) {
             __WEBPACK_IMPORTED_MODULE_6_screenfull___default.a.request(this);
         }
     });
+
     //On Open room event
     connection.onopen = () => {
         //if no audio nor video
@@ -14224,6 +14235,10 @@ class CamHandler extends __WEBPACK_IMPORTED_MODULE_1__Handlers__["a" /* default 
         const pseudo = document.createElement('p');
 
         camContainer.className = 'video-div';
+        console.log(event);
+        if (connection.isInitiator) {
+            camContainer.className += ' initiator-cam';
+        }
         camContainer.setAttribute('data-userid', event.streamid);
         camContainer.append(cam);
 

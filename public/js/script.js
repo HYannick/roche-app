@@ -236,10 +236,10 @@ $(function(){
     }
 
     //events on connection
-    connection.onstream = event => {
-        console.log(event);
-        let video = event.mediaElement;
 
+    connection.onstream = event => {
+        let video = event.mediaElement;
+        console.log(event);
         //check if the cam id exists. If it does removes it
         if(document.getElementById(event.streamid)) {
             var existing = document.getElementById(event.streamid);
@@ -255,7 +255,9 @@ $(function(){
 
         if(event.stream.isScreen){
             camHandler.createScreenShare(video, event);
-        } else {
+        } else if(event.extra.screenCam){
+            camHandler.createfullScreenCam(video, event);
+        }else {
             camHandler.createCam(video, event);
             participants.getParticipants(event);
         }
@@ -263,23 +265,33 @@ $(function(){
 
         camHandler.camIsRemote(video, event);
 
-
-
         animeInit();
 
-        //Init scroll if to much cameras
+        //Init scroll if too many cameras
         if(connection.videosContainer.height() >= $(window).height()){
             connection.videosContainer.addClass('toScroll');
         }else{
             connection.videosContainer.removeClass('toScroll');
         }
+
+        //init scroll if too many participants
+        let participantContainer = $('.bloc-participants');
+        if(participantContainer.width() >= 300){
+            participantContainer.addClass('p-extend');
+        }else{
+            participantContainer.removeClass('p-extend');
+        }
     };
-    //temporary solution
-    $('.video-container').on('click', '.video-div video', function(){
+
+
+    connection.videosContainer.on('click', '.video-div video', function() {
         if (screenfull.enabled) {
             screenfull.request(this);
         }
     });
+
+
+
     //On Open room event
     connection.onopen = () => {
         //if no audio nor video

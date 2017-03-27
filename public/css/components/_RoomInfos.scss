@@ -68,11 +68,25 @@
   padding: 15px;
   position: relative;
 }
+.bloc-participants{
+  transition: 0.3s;
+  &.p-extend{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    margin-bottom: 15px;
+    height: 80px;
+    .participants{
+      width: 500px;
+    }
+  }
+}
 .participants {
   color: #fff;
   top: 20px;
   left: 20px;
   display: table;
+  transition: 0.3s;
   .participant {
     display: inline-block;
     margin-right: 15px;

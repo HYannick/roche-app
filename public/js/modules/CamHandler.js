@@ -11,6 +11,10 @@ class CamHandler extends Handlers {
         const pseudo = document.createElement('p');
 
         camContainer.className = 'video-div';
+        console.log(event);
+        if(connection.isInitiator){
+            camContainer.className += ' initiator-cam';
+        }
         camContainer.setAttribute('data-userid', event.streamid);
         camContainer.append(cam);
 
