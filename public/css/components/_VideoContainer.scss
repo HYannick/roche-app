@@ -1,0 +1,147 @@
+@import "../common/Variables";
+
+.content-wrap{
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+  background: #fff;
+  transition: 0.1s;
+  //background: url(../../img/bg-2-.jpg) center center no-repeat;
+  //background-size: cover;
+  &.initCon{
+    margin-left: calc(100% / 6);
+    width: 75%;
+    float: left;
+    background: #333;
+  }
+  &.initRemote{
+    margin-left: calc(100% / 6);
+    width: calc(100%/ 1.2);
+    float: left;
+    background: #333;
+    padding: 0;
+  }
+}
+.screen-share{
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  transform: translate(-50%,-50%);
+  video{
+    width: 100%;
+  }
+}
+.video-wrapper{
+  opacity: 0;
+  display: table;
+  width: 250px;
+  position: absolute;
+  transition: 0.3s;
+  top: 0;
+  right: -200px;
+  height: 100vh;
+  border-right: 1px solid rgba(255, 255, 255, 0.30);
+  background: rgba(77, 161, 211, 0.30);
+  .video-container{
+    padding: 15px;
+    &.toScroll{
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 100vh;
+      .cam-controls{
+        right: 10px;
+      }
+    }
+  }
+
+  video{
+    width: 100%;
+    border-radius: 15px;
+  }
+  .video-div{
+    position: relative;
+    border-radius: 15px;
+    padding-bottom: 75%;
+    background: $color-main;
+    margin-bottom: 15px;
+    video{
+      position: absolute;
+      transition: 0.5s;
+      transform: scale(1) translate(0,0);
+    }
+    &.expand-video{
+      video{
+        transform: scale(3) translate(80%, 45%);
+      }
+
+    }
+    &:nth-child(2) {
+      margin-bottom: 90px;
+    }
+  }
+  .video-username{
+    position: absolute;
+    top: 0;
+    margin: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    background: rgba(58, 58, 58, 0.46);
+    color: #fff;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+
+.cam-controls {
+  position: absolute;
+  top: 50%;
+  right: -65px;
+  width: 45px;
+  transform: translateY(-50%);
+  button{
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(77,161,211,0.3);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 16px;
+    position: relative;
+    transition: 0.3s;
+    width: 45px;
+    height: 45px;
+    outline: none;
+    float: left;
+    margin: 5px;
+    &.muted{
+      .mic-on, .vid-on{
+        transform: rotate(180deg) scale(0) translate(-50%, -50%) ;
+      }
+      .mic-off, .vid-off{
+        transform: rotate(0deg) scale(1) translate(-50%, -50%) ;
+      }
+    }
+    &:hover{
+      background: $color-main;
+      color: #ffffff;
+    }
+    span{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: 0 0;
+
+    }
+
+    .mic-off, .vid-off{
+      transform: rotate(180deg) scale(0) translate(-50%, -50%) ;
+      transition: 0.3s;
+    }
+    .mic-on, .vid-on{
+      transform: rotate(0deg) scale(1) translate(-50%, -50%) ;
+      transition: 0.3s;
+    }
+  }
+}

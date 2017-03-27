@@ -1,0 +1,169 @@
+extends layout
+block content
+    //button.btn.btn-default.add-stream screen share
+    //button.btn.btn-default.remove-stream screen stop
+
+    //Chat box
+
+    .overlay-closed-session
+        .closed-session
+            p You have been disconnected !
+    .bloc-chat
+        .btn-chatbox
+            span.fa.fa-comments-o
+        .room-infos
+            .room-header
+                .col-md-4
+                    img(width='100%', src='/img/roche-logo-vector.png')
+                .col-md-8
+                    .room-name
+                        p Room name ::
+                        p.r-name
+
+            .bloc-infos
+                .participants
+                button.close-session Close sessions
+            .video-wrapper
+                .video-container
+        //
+        .chatbox
+            .chat-container
+                ul.chat-output
+            .send-text
+                span.input.input--custom.input-msg
+                    input#input-text-chat.input-chat.input__field.input__field--custom(type='text')
+                    |
+                    label.input__label.input__label--custom.input__label--custom-color-1(for='input-text-chat')
+                        span.input__label-content.input__label-content--custom Enter a message
+                    |
+                    span.btn-controls
+                        button#send.fa.fa-send-o
+    //Video + File Containers
+    .main-wrapper
+        .content-wrap
+            .expand-container
+            .screen-share
+            //Room Container
+            .room-container
+                .room-inputs
+                    .logo
+                        img(width='100%', src='/img/roche-logo-vector.png')
+                    form.form-inputs
+                        span.input.input--custom.input--filled.roomId
+                            input#room-id.input__field.input__field--custom(type='text', maxlength='50', required)
+                            |
+                            label.input__label.input__label--custom.input__label--custom-color-1(for='room-id')
+                                span.input__label-content.input__label-content--custom Room name
+                        |
+                        span.input.input--custom.roomPassword
+                            input#room-password.input__field.input__field--custom(type='text', maxlength='15', required)
+                            |
+                            label.input__label.input__label--custom.input__label--custom-color-1(for='room-password')
+                                span.input__label-content.input__label-content--custom Password
+                        |
+                        span.input.input--custom.roomUsername
+                            input#username.input__field.input__field--custom(type='text', maxlength='15', required)
+                            |
+                            label.input__label.input__label--custom.input__label--custom-color-1(for='username')
+                                span.input__label-content.input__label-content--custom Username
+                        //span.input.input--custom.clientMail
+                            input#client-email.input__field.input__field--custom(type='text')
+                            |
+                            label.input__label.input__label--custom.input__label--custom-color-1(for='client-email')
+                                span.input__label-content.input__label-content--custom Client Email
+                        .openOrJoin
+                            button#open-room.openRoom.button.button--antiman.button--inverted.button--border-thin.button--text-thick.button--size-m
+                                i.button__icon.icon.icon-plus
+                                span Open Room
+                            |
+                            button#join-room.joinRoom Join Room
+                .room-urls
+
+            #file-container
+                .drop-text
+                    span File container
+
+        //Toolbox
+        .toolbox-bar.col-md-1.col-sm-1
+            .btn-toolbox
+                .tool-btn.share-url
+                    .ctn-picto
+                        span.fa.fa-share-alt
+                    span.n-file Share Room
+                .tool.tool-btn.tool-img(data-tool="img")
+                    .ctn-picto
+                        span.fa.fa-picture-o
+                    span.n-file Images
+                .tool.tool-btn.tool-pdf(data-tool="pdf")
+                    .ctn-picto
+                        span.fa.fa-file-pdf-o
+                    span.n-file PDF
+                .tool.tool-btn.tool-video(data-tool="video")
+                    .ctn-picto
+                        span.fa.fa-file-video-o
+                    span.n-file Videos
+                .tool-btn.add-stream.disabled
+                    .ctn-picto
+                        span.fa.fa-desktop
+                    span.n-file Share Screens
+    .toolbox.toolbox-images(data-tabs="img")
+        .toolbox-bloc.bloc-files.col-md-3
+            .toolbox-items
+                .row
+                    each picture in pictures
+                        .col-md-12
+                            .toolbox-item.toolbox-item_img.share-img.share-file(data-src='/files-share/' + picture.src)
+                                .overlay_item
+                                    span.fa.fa-picture-o
+                                |
+                                img(width='100%', src='/files-share/' + picture.src)
+
+        .toolbox-bloc.bloc-argu.col-md-9
+            .argumentary
+                .arg-header
+                    h3 Select a picture
+                    button.close-panel
+                        span.fa.fa-close
+                .txt-argumentary
+                    span.empty-arg Nothing to show :(
+                button.close-file remove file
+    .toolbox.toolbox-pdf(data-tabs="pdf")
+        .toolbox-bloc.bloc-files.col-md-3
+            .toolbox-items
+                .row
+                    each pdf in pdfFiles
+                        .col-md-12
+                            .toolbox-item.toolbox-item_pdf.share-pdf.share-file(data-src='/files-share/' + pdf.src)
+                                .overlay_item
+                                    span.fa.fa-file-pdf-o
+                                span.pdf-title #{pdf.title}
+
+        .toolbox-bloc.bloc-argu.col-md-9
+            .argumentary
+                .arg-header
+                    h3 Select a pdf
+                    button.close-panel
+                        span.fa.fa-close
+                .txt-argumentary
+                    span.empty-arg Nothing to show :(
+                button.close-file remove file
+    .toolbox.toolbox-video(data-tabs="video")
+        .toolbox-bloc.bloc-files.col-md-3
+            .toolbox-items
+                .row
+                    each video in videoFiles
+                        .col-md-12
+                            .toolbox-item.toolbox-item_video.share-video.share-file(data-src='/files-share/' + video.src)
+                                .overlay_item
+                                    span.fa.fa-video-camera
+                                video(width='100%', autoplay='', muted, loop='', src='/files-share/' + video.src)
+
+        .toolbox-bloc.bloc-argu.col-md-9
+            .argumentary
+                .arg-header
+                    h3 Select a video
+                    button.close-panel
+                        span.fa.fa-close
+                .txt-argumentary
+                    span.empty-arg Nothing to show :(
+                button.close-file remove file

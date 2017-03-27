@@ -1,0 +1,50 @@
+@import "../common/Variables";
+.shared-img{
+  width: 45%;
+}
+.shared-file-video{
+  width: 80%;
+}
+.shared-img, .shared-file-video{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(0.95) translate(-50%,-50%);
+  transform-origin: 0 0;
+}
+.shared-file-iframe{
+  width: 100%;
+  height: 100vh;
+}
+.empty-ctn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 20px;
+  color: #fff;
+  img{
+    margin: 0 auto;
+    display: table;
+  }
+}
+
+.bloc-share{
+  //background: $main-grey;
+  height: 100vh;
+  position: relative;
+}
+.expand{
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 16px;
+  padding: 10px 14px;
+  z-index: 999;
+  outline: none;
+}

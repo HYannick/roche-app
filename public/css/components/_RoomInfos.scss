@@ -1,0 +1,111 @@
+@import "../common/Variables";
+
+.room-infos{
+}
+
+.url-room{
+  position: relative;
+  transition: 0.3s;
+  margin: 0 auto;
+  max-width: 300px;
+}
+.room-urls{
+  position: relative;
+  text-align: center;
+  p{
+    margin: 0;
+  }
+  a{
+    text-decoration: none !important;
+  }
+}
+.room-header{
+  display: table;
+  margin: 15px 0 ;
+}
+.room-name{
+  display: table;
+  p{
+    font-size: 12px;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+}
+
+.close-session{
+  position: absolute;
+  background: $main-red;
+  padding: 5px 15px;
+  bottom: -18px;
+  right: 0;
+  border-radius: 30px 0 0 30px;
+  color: #ffffff;
+  transition: 0.3s;
+  border: 5px solid #fff;
+  border-right: none;
+  outline: none;
+  &:hover{
+    background: lighten($main-red,5%);
+  }
+}
+
+.toggle-room {
+  cursor: pointer;
+  position: absolute;
+  bottom: -20px;
+  background: #0279c1;
+  width: 50px;
+  height: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  text-align: center;
+}
+.bloc-infos{
+  background: rgba(2, 121, 193, 0.70);
+  padding: 15px;
+  position: relative;
+}
+.participants {
+  color: #fff;
+  top: 20px;
+  left: 20px;
+  display: table;
+  .participant {
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+    border-radius: 50%;
+    background: #0279c1;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+    .usn{
+      position: absolute;
+      top:50%;
+      left: 50%;
+      color: #ffffff;
+      transform: translate(-50%,-50%);
+    }
+    .tooltip-usn{
+      position: absolute;
+      display: table;
+      bottom: -20px;
+      padding: 5px 10px;
+      background: $color-main;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+    }
+    &:hover{
+      .tooltip-usn{
+        opacity: 1;
+        bottom: -35px;
+        visibility: visible;
+      }
+    }
+  }
+}

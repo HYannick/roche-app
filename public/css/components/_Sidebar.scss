@@ -1,0 +1,112 @@
+@import "../common/Variables";
+/*
+.sidebar{
+  background: $color-1;
+  height: 100vh;
+  position: relative;
+}
+.bloc-chat{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  width: 100%;
+  .send-text{
+    position: relative;
+    .btn-controls{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10px;
+      cursor: pointer;
+      button{
+        border:none;
+        background: none;
+        float: left;
+        display: table;
+        color: $color-5;
+      }
+    }
+  }
+  .chat-output{
+    padding: 15px;
+
+  }
+  .msg-container {
+    width: 100%;
+    list-style: none;
+    display: table;
+    .msg{
+      background: $color-5;
+      color: $color-1;
+      display: table;
+      padding: 15px;
+    }
+    &:nth-child(odd){
+      .msg{
+        float: left;
+      }
+    }
+    &:nth-child(even){
+      .msg{
+        float: right;
+      }
+    }
+  }
+
+
+}
+.input-chat{
+  border:none;
+  background: $color-3;
+  color: $color-5;
+  width: 100%;
+  outline: none;
+  padding: 10px 70px 10px 15px;
+}
+
+.room-container{
+  padding: 15px;
+  label{
+    color: #fff;
+    margin: 10px 0;
+  }
+  input{
+    border:none;
+    background: $color-3;
+    color: $color-5;
+    width: 100%;
+    outline: none;
+    padding: 10px 70px 10px 15px;
+  }
+  button{
+    background: transparent;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid $color-4;
+    color: $color-4;
+    outline: none;
+    position: relative;
+    transition: 0.3s;
+    z-index: 1;
+    width: 100%;
+    &:after{
+      content: '';
+      background: $color-4;
+      position: absolute;
+      top:0;
+      height: 100%;
+      left: 0;
+      z-index: -1;
+      width: 0;
+      transition: 0.3s
+    }
+    &:hover{
+      color: #ffffff;
+      &:after{
+        width: 100%;
+      }
+    }
+  }
+}
+
+*/

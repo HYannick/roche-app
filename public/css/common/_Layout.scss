@@ -1,0 +1,44 @@
+@import "Variables";
+
+.main-wrapper{
+
+  transition: 0.3s;
+  &.opened{
+    transform: translateY(109px);
+  }
+}
+
+body{
+  font-family: $numans;
+  height: 100vh;
+  background:$main-grey;
+  overflow: hidden;
+  opacity: 0;
+  transition: .3s ease-in;
+  transform: scale(1.02);
+  transform-origin: 50% 50% 0;
+  &.loaded{
+    opacity: 1;
+    transform: scale(1);
+  }
+  &.remote-user{
+    .roomId, .roomPassword, .toolbox-bar, .openRoom, .share-url, .clientMail{
+      display: none;
+    }
+    .joinRoom{
+      display: block;
+    }
+  }
+
+}
+
+.block-revealer__element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  pointer-events: none;
+  opacity: 0;
+}
