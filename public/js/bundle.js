@@ -13944,7 +13944,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
         //init scroll if too many participants
         let participantContainer = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.bloc-participants');
-        if (participantContainer.find('.participants').width() >= 100) {
+        if (participantContainer.find('.participants').width() >= 300) {
             participantContainer.addClass('p-extend');
         } else {
             participantContainer.removeClass('p-extend');
