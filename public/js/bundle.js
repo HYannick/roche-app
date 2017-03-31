@@ -13761,6 +13761,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         }
 
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.room-name .r-name').html(roomName);
+
         connection.extra.username = document.getElementById('username').value || 'username';
         form.addClass('connected');
         connection.open(roomName, password);
@@ -13929,11 +13930,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         } else {
             camHandler.createCam(video, event);
             participants.getParticipants(event);
+            animeInit();
         }
 
         camHandler.camIsRemote(video, event);
-
-        animeInit();
 
         //Init scroll if too many cameras
         if (connection.videosContainer.height() >= __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height()) {
@@ -14000,11 +14000,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     };
 
     //Screensharing
+
     screenShare.click(function () {
-        connection.addStream({
-            screen: true,
-            oneway: true
-        });
+        const screenBloc = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.screenshare-bloc video');
+        if (!screenBloc.length) {
+            connection.addStream({
+                screen: true,
+                oneway: true
+            });
+        }
         chatShare.closeFile();
         removeToolbox();
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).addClass('active');
@@ -14072,6 +14076,22 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         inputChat.val('');
     });
 
+    let hideDownload = document.querySelector('.hide-download');
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#file-container').on('mouseenter', '.bloc-share', function () {
+        console.log(hideDownload);
+        __WEBPACK_IMPORTED_MODULE_5_animejs___default()({
+            targets: hideDownload,
+            top: 1
+        });
+    });
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shared-file-iframe').on('mouseleave', 'iframe', function () {
+        __WEBPACK_IMPORTED_MODULE_5_animejs___default()({
+            targets: hideDownload,
+            top: -45
+        });
+    });
+
     share.click(function () {
         const self = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
         chatShare.returnFile(self);
@@ -14091,9 +14111,37 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         }
     });
 
-    btnChat.click(() => {
+    btnChat.click(function () {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()('span', this).toggleClass('opn');
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.bloc-chat').toggleClass('active');
+    });
+
+    let isOp = true;
+    let vwrapper = document.querySelector('.video-wrapper');
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.btn-camlayer').click(function () {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('span', this).toggleClass('opn');
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('span', this).toggleClass('fa-eye-slash fa-camera');
+        if (isOp) {
+            __WEBPACK_IMPORTED_MODULE_5_animejs___default()({
+                targets: vwrapper,
+                duration: 100,
+                delay: 80,
+                easing: 'easeOutExpo',
+                right: 0
+            });
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.cam-controls').fadeOut();
+            isOp = false;
+        } else {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.cam-controls').fadeIn();
+            __WEBPACK_IMPORTED_MODULE_5_animejs___default()({
+                targets: vwrapper,
+                duration: 100,
+                delay: 80,
+                easing: 'easeOutExpo',
+                right: -250
+            });
+            isOp = true;
+        }
     });
 
     toolBtn.on('click', function () {
@@ -14304,6 +14352,7 @@ class ChatShare extends __WEBPACK_IMPORTED_MODULE_1__Handlers__["a" /* default *
         const url = event.data || event;
         let template;
         var shortenedUsername = username.slice(0, 2);
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.room-container').fadeOut();
         if (url.search(/jpg|jpeg/i) !== -1) {
             template = `
                 <div class="bloc-share">
@@ -14314,7 +14363,8 @@ class ChatShare extends __WEBPACK_IMPORTED_MODULE_1__Handlers__["a" /* default *
         } else if (url.search(/pdf/i) !== -1) {
             template = `
                 <div class="bloc-share">
-                    <iframe class="shared-file-iframe" src="${url}"></iframe>
+                    <div class="hide-download"></div>
+                    <iframe class="shared-file-iframe" src="${url}#toolbar=0"></iframe>
                 </div>
             `;
             this.fileContainer.html(template).hide().fadeIn();

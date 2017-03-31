@@ -19,6 +19,13 @@
     }*/
   }
 }
+.bloc-r-chat{
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+}
 li[data-usn="remote"]{
   list-style: none;
   display: table;

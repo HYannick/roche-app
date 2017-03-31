@@ -79,6 +79,7 @@ $(function(){
         }
 
         $('.room-name .r-name').html(roomName);
+
         connection.extra.username = document.getElementById('username').value || 'username';
         form.addClass('connected');
         connection.open(roomName, password);
@@ -258,12 +259,13 @@ $(function(){
         }else {
             camHandler.createCam(video, event);
             participants.getParticipants(event);
+            animeInit();
         }
 
 
         camHandler.camIsRemote(video, event);
 
-        animeInit();
+
 
         //Init scroll if too many cameras
         if(connection.videosContainer.height() >= $(window).height()){
@@ -334,11 +336,15 @@ $(function(){
     };
 
     //Screensharing
+
     screenShare.click(function() {
-        connection.addStream({
-            screen: true,
-            oneway: true
-        });
+        const screenBloc = $('.screenshare-bloc video');
+        if(!screenBloc.length){
+            connection.addStream({
+                screen: true,
+                oneway: true
+            });
+        }
         chatShare.closeFile();
         removeToolbox();
         $(this).addClass('active');
@@ -408,6 +414,22 @@ $(function(){
         inputChat.val('');
     });
 
+    let hideDownload = document.querySelector('.hide-download');
+    $('#file-container').on('mouseenter', '.bloc-share', function(){
+        console.log(hideDownload)
+        anime({
+            targets : hideDownload,
+            top: 1
+        })
+    });
+
+    $('.shared-file-iframe').on('mouseleave', 'iframe', function(){
+        anime({
+            targets : hideDownload,
+            top: -45
+        })
+    })
+
     share.click(function(){
         const self = $(this);
         chatShare.returnFile(self);
@@ -428,9 +450,38 @@ $(function(){
         }
     });
 
-    btnChat.click( () =>{
+    btnChat.click(function(){
         $('span', this).toggleClass('opn');
         $('.bloc-chat').toggleClass('active');
+    });
+
+    let isOp = true;
+    let vwrapper = document.querySelector('.video-wrapper');
+    $('.btn-camlayer').click(function() {
+        $('span', this).toggleClass('opn');
+        $('span', this).toggleClass('fa-eye-slash fa-camera');
+        if(isOp){
+            anime({
+                targets : vwrapper,
+                duration: 100,
+                delay: 80,
+                easing: 'easeOutExpo',
+                right: 0
+            });
+            $('.cam-controls').fadeOut();
+            isOp = false;
+        }else{
+            $('.cam-controls').fadeIn();
+            anime({
+                targets : vwrapper,
+                duration: 100,
+                delay: 80,
+                easing: 'easeOutExpo',
+                right: -250
+            });
+            isOp = true;
+        }
+
     });
 
 

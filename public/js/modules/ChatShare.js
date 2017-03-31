@@ -21,6 +21,7 @@ class ChatShare extends Handlers {
         const url = event.data || event;
         let template;
         var shortenedUsername = username.slice(0,2);
+        $('.room-container').fadeOut();
         if(url.search(/jpg|jpeg/i) !== -1){
             template =
             `
@@ -33,7 +34,8 @@ class ChatShare extends Handlers {
             template =
             `
                 <div class="bloc-share">
-                    <iframe class="shared-file-iframe" src="${url}"></iframe>
+                    <div class="hide-download"></div>
+                    <iframe class="shared-file-iframe" src="${url}#toolbar=0"></iframe>
                 </div>
             `;
             this.fileContainer.html(template).hide().fadeIn();

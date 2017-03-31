@@ -7,44 +7,46 @@ block content
 
     .overlay-closed-session
         .closed-session
-            p You have been disconnected !
+            p Your host closed the room, you have been disconnected
     .bloc-chat
         .btn-chatbox
             span.fa.fa-comments-o
         .room-infos
-            .room-header
-                .col-md-4
-                    img(width='100%', src='/img/roche-logo-vector.png')
-                .col-md-8
-                    .room-name
-                        p Room name ::
-                        p.r-name
+            .bloc-r-chat
+                .room-header
+                    .col-md-4
+                        img(width='100%', src='/img/roche-logo-vector.png')
+                    .col-md-8
+                        .room-name
+                            p Room name ::
+                            p.r-name
 
-            .bloc-infos
-                .bloc-participants
+                .bloc-infos
                     .participants
-                button.close-session Close session
+                    button.close-session Close sessions
+
+                //
+                .chatbox
+                    .chat-container
+                        ul.chat-output
+                    .send-text
+                        span.input.input--custom.input-msg
+                            input#input-text-chat.input-chat.input__field.input__field--custom(type='text')
+                            |
+                            label.input__label.input__label--custom.input__label--custom-color-1(for='input-text-chat')
+                                span.input__label-content.input__label-content--custom Enter a message
+                            |
+                            span.btn-controls
+                                button#send.fa.fa-send-o
             .video-wrapper
+                .btn-camlayer
+                    span.fa.fa-eye-slash.opn
                 .video-container
-        //
-        .chatbox
-            .chat-container
-                ul.chat-output
-            .send-text
-                span.input.input--custom.input-msg
-                    input#input-text-chat.input-chat.input__field.input__field--custom(type='text')
-                    |
-                    label.input__label.input__label--custom.input__label--custom-color-1(for='input-text-chat')
-                        span.input__label-content.input__label-content--custom Enter a message
-                    |
-                    span.btn-controls
-                        button#send.fa.fa-send-o
     //Video + File Containers
     .main-wrapper
         .content-wrap
             .expand-container
             .screen-share
-            .screen-cam
             //Room Container
             .room-container
                 .room-inputs

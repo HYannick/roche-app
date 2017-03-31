@@ -5,6 +5,14 @@
 .shared-file-video{
   width: 80%;
 }
+.hide-download{
+  position: absolute;
+  width: 30%;
+  right: 60px;
+  top: -45px;
+  height: 40px;
+  background: #323639;
+}
 .shared-img, .shared-file-video{
   position: absolute;
   top: 50%;
