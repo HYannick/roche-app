@@ -10,7 +10,7 @@
   position: absolute;
   //width: 90px;
   height: 100vh;
-  background: rgba(2, 121, 193, 0.80);
+  background: rgba(2, 121, 193, 1);
   border-left: 1px solid rgba(255, 255, 255, 0.70);
   z-index: 9999;
   &.open{
@@ -115,6 +115,14 @@
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
+
+  }
+
+  &.collapsed{
+    transform: translateX(75%) !important;
+    .argumentary {
+      opacity: 0;
+    }
   }
 
   .toolbox-bloc{
@@ -246,3 +254,4 @@
   }
 
 }
+

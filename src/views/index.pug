@@ -57,7 +57,7 @@ block content
                             input#room-id.input__field.input__field--custom(type='text', maxlength='50', required)
                             |
                             label.input__label.input__label--custom.input__label--custom-color-1(for='room-id')
-                                span.input__label-content.input__label-content--custom Nom de la room
+                                span.input__label-content.input__label-content--custom Nom du salon
                         |
                         span.input.input--custom.roomPassword
                             input#room-password.input__field.input__field--custom(type='text', maxlength='15', required)
@@ -85,7 +85,8 @@ block content
 
             #file-container
                 .drop-text
-                    span File container
+                    span
+                        img(width='100%', src='/img/roche-logo-vector.png')
 
         //Toolbox
         .toolbox-bar.col-md-1.col-sm-1
@@ -111,63 +112,73 @@ block content
                         span.fa.fa-desktop
                     span.n-file Share Screens
     .toolbox.toolbox-images(data-tabs="img")
-        .toolbox-bloc.bloc-files.col-md-3
-            .toolbox-items
-                .row
-                    each picture in pictures
-                        .col-md-12
-                            .toolbox-item.toolbox-item_img.share-img.share-file(data-src='/files-share/' + picture.src)
-                                .overlay_item
-                                    span.fa.fa-picture-o
-                                |
-                                img(width='100%', src='/files-share/' + picture.src)
+        button.tool_collapse--btn
+            span clpse
+        .toolbox-ctn
+            .toolbox-bloc.bloc-files.col-md-3
+                .toolbox-items
+                    .row
+                        each picture in pictures
+                            .col-md-12
+                                .toolbox-item.toolbox-item_img.share-img.share-file(data-src='/files-share/' + picture.src)
+                                    .overlay_item
+                                        span.fa.fa-picture-o
+                                    |
+                                    img(width='100%', src='/files-share/' + picture.src)
 
-        .toolbox-bloc.bloc-argu.col-md-9
-            .argumentary
-                .arg-header
-                    h3 Select a picture
-                    button.close-panel
-                        span.fa.fa-close
-                .txt-argumentary
-                    span.empty-arg Nothing to show :(
-                button.close-file remove file
+            .toolbox-bloc.bloc-argu.col-md-9
+                .argumentary
+                    .arg-header
+                        h3 Select a picture
+                        button.close-panel
+                            span.fa.fa-close
+                    .txt-argumentary
+                        span.empty-arg Nothing to show :(
+                    button.close-file remove file
     .toolbox.toolbox-pdf(data-tabs="pdf")
-        .toolbox-bloc.bloc-files.col-md-3
-            .toolbox-items
-                .row
-                    each pdf in pdfFiles
-                        .col-md-12
-                            .toolbox-item.toolbox-item_pdf.share-pdf.share-file(data-src='/files-share/' + pdf.src)
-                                .overlay_item
-                                    span.fa.fa-file-pdf-o
-                                span.pdf-title #{pdf.title}
 
-        .toolbox-bloc.bloc-argu.col-md-9
-            .argumentary
-                .arg-header
-                    h3 Select a pdf
-                    button.close-panel
-                        span.fa.fa-close
-                .txt-argumentary
-                    span.empty-arg Nothing to show :(
-                button.close-file remove file
+        button.tool_collapse--btn
+            span clpse
+        .toolbox-ctn
+            .toolbox-bloc.bloc-files.col-md-3
+                .toolbox-items
+                    .row
+                        each pdf in pdfFiles
+                            .col-md-12
+                                .toolbox-item.toolbox-item_pdf.share-pdf.share-file(data-src='/files-share/' + pdf.src)
+                                    .overlay_item
+                                        span.fa.fa-file-pdf-o
+                                    span.pdf-title #{pdf.title}
+
+            .toolbox-bloc.bloc-argu.col-md-9
+                .argumentary
+                    .arg-header
+                        h3 Select a pdf
+                        button.close-panel
+                            span.fa.fa-close
+                    .txt-argumentary
+                        span.empty-arg Nothing to show :(
+                    button.close-file remove file
     .toolbox.toolbox-video(data-tabs="video")
-        .toolbox-bloc.bloc-files.col-md-3
-            .toolbox-items
-                .row
-                    each video in videoFiles
-                        .col-md-12
-                            .toolbox-item.toolbox-item_video.share-video.share-file(data-src='/files-share/' + video.src)
-                                .overlay_item
-                                    span.fa.fa-video-camera
-                                video(width='100%', autoplay='', muted, loop='', src='/files-share/' + video.src)
+        button.tool_collapse--btn
+            span clpse
+        .toolbox-ctn
+            .toolbox-bloc.bloc-files.col-md-3
+                .toolbox-items
+                    .row
+                        each video in videoFiles
+                            .col-md-12
+                                .toolbox-item.toolbox-item_video.share-video.share-file(data-src='/files-share/' + video.src)
+                                    .overlay_item
+                                        span.fa.fa-video-camera
+                                    video(width='100%', autoplay='', muted, loop='', src='/files-share/' + video.src)
 
-        .toolbox-bloc.bloc-argu.col-md-9
-            .argumentary
-                .arg-header
-                    h3 Select a video
-                    button.close-panel
-                        span.fa.fa-close
-                .txt-argumentary
-                    span.empty-arg Nothing to show :(
-                button.close-file remove file
+            .toolbox-bloc.bloc-argu.col-md-9
+                .argumentary
+                    .arg-header
+                        h3 Select a video
+                        button.close-panel
+                            span.fa.fa-close
+                    .txt-argumentary
+                        span.empty-arg Nothing to show :(
+                    button.close-file remove file

@@ -13867,7 +13867,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     rev.reveal();
     function removeToolbox() {
         toolBtn.removeClass('active').addClass('inactive');
-        toolbox.removeClass('is-open');
+        toolbox.removeClass('is-open collapsed');
         screenShare.removeClass('active').addClass('inactive');
     }
 
@@ -14144,6 +14144,12 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         }
     });
 
+    const collapseToolbox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.tool_collapse--btn');
+
+    collapseToolbox.click(function () {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent().toggleClass('collapsed');
+    });
+
     toolBtn.on('click', function () {
         var dataTool = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('tool');
         var toToggle = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(`.toolbox[data-tabs="${dataTool}"]`);
@@ -14221,7 +14227,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
         console.log('remote');
         body.addClass('remote-user');
         joinRoom.removeClass('joinRoom').addClass('button button--antiman button--inverted button--border-thin button--text-thick button--size-m');
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-text span').text('Waiting for content ~');
     }
 });
 

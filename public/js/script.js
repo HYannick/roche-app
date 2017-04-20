@@ -187,7 +187,7 @@ $(function(){
     rev.reveal();
     function removeToolbox(){
         toolBtn.removeClass('active').addClass('inactive');
-        toolbox.removeClass('is-open');
+        toolbox.removeClass('is-open collapsed');
         screenShare.removeClass('active').addClass('inactive');
     }
 
@@ -485,6 +485,11 @@ $(function(){
     });
 
 
+    const collapseToolbox = $('.tool_collapse--btn');
+
+    collapseToolbox.click(function() {
+        $(this).parent().toggleClass('collapsed');
+    });
 
     toolBtn.on('click', function(){
         var dataTool = $(this).data('tool');
@@ -571,6 +576,5 @@ $(function(){
         console.log('remote');
         body.addClass('remote-user');
         joinRoom.removeClass('joinRoom').addClass('button button--antiman button--inverted button--border-thin button--text-thick button--size-m');
-        $('.drop-text span').text('Waiting for content ~');
     }
 });
