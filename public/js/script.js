@@ -428,7 +428,7 @@ $(function(){
             targets : hideDownload,
             top: -45
         })
-    })
+    });
 
     share.click(function(){
         const self = $(this);
@@ -488,6 +488,7 @@ $(function(){
     const collapseToolbox = $('.tool_collapse--btn');
 
     collapseToolbox.click(function() {
+        $('span', this).toggleClass('fa-compress fa-expand');
         $(this).parent().toggleClass('collapsed');
     });
 
