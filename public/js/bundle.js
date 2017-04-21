@@ -14147,6 +14147,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     const collapseToolbox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.tool_collapse--btn');
 
     collapseToolbox.click(function () {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('span', this).toggleClass('fa-compress fa-expand');
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent().toggleClass('collapsed');
     });
 
