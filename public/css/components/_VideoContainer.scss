@@ -49,6 +49,10 @@
   }
 }
 
+
+.screenshare-bloc{
+  height: 90vh;
+}
 .screen-share, .screen-cam{
   width: 90%;
   position: absolute;
@@ -58,6 +62,9 @@
   transform: translate(-50%,-50%);
   video{
     width: 100%;
+    display: block;
+    margin: 0 auto;
+    height: 100%;
   }
 }
 .video-wrapper{

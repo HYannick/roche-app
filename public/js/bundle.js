@@ -14002,6 +14002,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
     //Screensharing
 
     screenShare.click(function () {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.screenshare-bloc').remove();
         const screenBloc = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.screenshare-bloc video');
         if (!screenBloc.length) {
             connection.addStream({

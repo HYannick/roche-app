@@ -338,6 +338,7 @@ $(function(){
     //Screensharing
 
     screenShare.click(function() {
+        $('.screenshare-bloc').remove();
         const screenBloc = $('.screenshare-bloc video');
         if(!screenBloc.length){
             connection.addStream({
